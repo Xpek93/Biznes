@@ -1,0 +1,764 @@
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#10172a">
+  <meta name="description" content="Biznesplan abonamentowej obsługi LinkedIn dla firm B2B w Polsce. Rynek, konkurencja, model, finanse, ryzyka i plan 90 dni.">
+  <title>Biznesplan — obsługa LinkedIn dla firm B2B</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #172033;
+      --muted: #647087;
+      --paper: #f5f7fb;
+      --surface: #fff;
+      --line: #e4e9f1;
+      --navy: #10172a;
+      --navy-2: #1b2842;
+      --teal: #17b7a4;
+      --teal-dark: #087c78;
+      --blue: #6388ff;
+      --amber: #f2b34b;
+      --rose: #de6d7f;
+      --shadow: 0 18px 55px rgba(27, 40, 66, .08);
+      --radius: 20px;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 92px; }
+    body { margin: 0; color: var(--ink); background: var(--paper); line-height: 1.65; }
+    a { color: var(--teal-dark); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+    a:hover { color: #075d5a; }
+    button { font: inherit; }
+    .shell { width: min(1180px, calc(100% - 40px)); margin-inline: auto; }
+
+    .topbar {
+      position: sticky; top: 0; z-index: 20;
+      color: #fff; background: rgba(16, 23, 42, .94);
+      backdrop-filter: blur(14px); border-bottom: 1px solid rgba(255,255,255,.09);
+    }
+    .topbar-inner { height: 66px; display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+    .brand { display: flex; align-items: center; gap: 11px; color: #fff; text-decoration: none; font-weight: 750; letter-spacing: -.02em; white-space: nowrap; }
+    .brand-mark { width: 31px; height: 31px; border-radius: 10px; display: grid; place-items: center; color: var(--navy); background: var(--teal); font-weight: 900; }
+    .nav { display: flex; align-items: center; gap: 17px; overflow-x: auto; scrollbar-width: none; }
+    .nav::-webkit-scrollbar { display: none; }
+    .nav a { color: #c5ccda; text-decoration: none; font-size: 12px; white-space: nowrap; }
+    .nav a:hover { color: #fff; }
+    .nav-cta { color: #081c2b !important; background: var(--teal); border-radius: 99px; padding: 8px 13px; font-weight: 750; }
+
+    .hero {
+      position: relative; overflow: hidden; color: #fff;
+      background:
+        radial-gradient(ellipse at 82% 15%, rgba(23,183,164,.27), transparent 31%),
+        radial-gradient(ellipse at 67% 84%, rgba(99,136,255,.18), transparent 30%),
+        linear-gradient(135deg, #10172a 0%, #17233c 58%, #112d39 100%);
+    }
+    .hero::after { content: ""; position: absolute; width: 520px; height: 520px; right: -210px; top: 110px; border: 1px solid rgba(255,255,255,.08); border-radius: 50%; box-shadow: 0 0 0 55px rgba(255,255,255,.018), 0 0 0 110px rgba(255,255,255,.015); }
+    .hero-grid { position: relative; z-index: 1; display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(270px, .7fr); gap: 50px; align-items: center; padding-block: 82px 76px; }
+    .eyebrow { color: #82e0d4; text-transform: uppercase; letter-spacing: .15em; font-size: 11px; font-weight: 800; }
+    h1 { margin: 15px 0 20px; max-width: 790px; font-size: clamp(38px, 5.3vw, 66px); line-height: 1.03; letter-spacing: -.055em; }
+    .hero p { max-width: 710px; color: #c7d0de; font-size: 17px; margin: 0; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
+    .button { display: inline-flex; align-items: center; justify-content: center; min-height: 44px; padding: 10px 17px; border-radius: 99px; color: var(--navy); background: var(--teal); text-decoration: none; font-size: 13px; font-weight: 800; border: 1px solid transparent; }
+    .button:hover { color: var(--navy); background: #54d6c6; }
+    .button.secondary { color: #fff; border-color: rgba(255,255,255,.22); background: transparent; }
+    .hero-card { border: 1px solid rgba(255,255,255,.14); background: rgba(255,255,255,.07); border-radius: var(--radius); padding: 25px; box-shadow: 0 24px 60px rgba(0,0,0,.15); }
+    .hero-card small { color: #aeb9ca; text-transform: uppercase; letter-spacing: .11em; font-size: 10px; font-weight: 800; }
+    .hero-card strong { display: block; margin: 7px 0; font-size: 34px; letter-spacing: -.04em; }
+    .hero-card p { color: #c0cbda; font-size: 13px; }
+    .hero-stat { display: flex; justify-content: space-between; gap: 10px; border-top: 1px solid rgba(255,255,255,.12); padding-top: 14px; margin-top: 15px; color: #c0cbda; font-size: 12px; }
+    .hero-stat b { color: #fff; }
+
+    .disclaimer-wrap { margin-top: -1px; background: var(--navy); padding-bottom: 24px; }
+    .disclaimer { display: flex; align-items: flex-start; gap: 12px; padding: 15px 18px; border: 1px solid rgba(242,179,75,.3); border-radius: 14px; background: rgba(242,179,75,.08); color: #e8dfcb; font-size: 12px; }
+    .disclaimer b { color: #ffd17b; white-space: nowrap; }
+
+    main { padding-block: 38px 80px; }
+    .section { margin-top: 48px; }
+    .section-heading { display: flex; align-items: end; justify-content: space-between; gap: 24px; margin-bottom: 20px; }
+    .section-kicker { color: var(--teal-dark); text-transform: uppercase; letter-spacing: .13em; font-size: 10px; font-weight: 850; }
+    h2 { margin: 4px 0 0; font-size: clamp(25px, 3vw, 36px); letter-spacing: -.045em; line-height: 1.15; }
+    h3 { margin: 0 0 9px; font-size: 17px; letter-spacing: -.02em; }
+    p { margin: 0 0 13px; }
+    .lead { max-width: 780px; color: var(--muted); font-size: 15px; }
+    .muted { color: var(--muted); }
+    .small { font-size: 12px; }
+    .grid { display: grid; gap: 16px; }
+    .grid.two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .grid.three { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .grid.four { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+    .card { padding: 22px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface); box-shadow: var(--shadow); }
+    .card.compact { padding: 18px; }
+    .card p:last-child { margin-bottom: 0; }
+    .tag { display: inline-flex; padding: 5px 9px; border-radius: 99px; background: #eaf8f5; color: var(--teal-dark); font-size: 10px; font-weight: 800; text-transform: uppercase; letter-spacing: .06em; }
+    .metric { font-size: 31px; font-weight: 850; letter-spacing: -.055em; line-height: 1.2; }
+    .metric-label { margin-top: 6px; color: var(--muted); font-size: 12px; }
+    .accent-card { border-top: 3px solid var(--teal); }
+    .warning-card { background: #fffaf0; border-color: #f0dfb8; }
+    .warning-card .tag { color: #875b14; background: #fff0cc; }
+    .decision-card { color: #fff; background: linear-gradient(135deg, #15233c, #1a514f); border: 0; }
+    .decision-card p { color: #d2e3e3; }
+    .decision-card .tag { color: #073532; background: #8de5d8; }
+
+    .table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 15px; background: #fff; box-shadow: var(--shadow); }
+    table { width: 100%; border-collapse: collapse; min-width: 650px; font-size: 12px; }
+    th, td { padding: 12px 14px; text-align: left; vertical-align: top; border-bottom: 1px solid var(--line); }
+    th { color: #fff; background: var(--navy-2); font-size: 10px; text-transform: uppercase; letter-spacing: .075em; white-space: nowrap; }
+    tr:last-child td { border-bottom: 0; }
+    tbody tr:nth-child(even) { background: #fafbfd; }
+    td.num, th.num { text-align: right; white-space: nowrap; }
+    .table-caption { color: var(--muted); font-size: 11px; margin: 10px 2px 0; }
+    .source-note { color: var(--muted); font-size: 11px; }
+
+    .steps { display: grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap: 12px; }
+    .step { padding: 18px; border-radius: 16px; background: #fff; border: 1px solid var(--line); }
+    .step-number { width: 28px; height: 28px; display: grid; place-items: center; border-radius: 9px; color: #fff; background: var(--navy-2); font-size: 12px; font-weight: 800; margin-bottom: 13px; }
+    .step p { margin: 0; color: var(--muted); font-size: 12px; }
+    .step h3 { font-size: 14px; }
+
+    .scenario-controls { display: flex; flex-wrap: wrap; gap: 8px; }
+    .scenario-button { border: 1px solid var(--line); color: var(--muted); background: #fff; padding: 8px 13px; border-radius: 99px; font-size: 12px; font-weight: 750; cursor: pointer; }
+    .scenario-button[aria-pressed="true"] { color: #fff; background: var(--navy-2); border-color: var(--navy-2); }
+    .finance-summary { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: 12px; margin-bottom: 16px; }
+    .finance-stat { background: #fff; border: 1px solid var(--line); border-radius: 15px; padding: 15px; }
+    .finance-stat span { display: block; color: var(--muted); font-size: 10px; text-transform: uppercase; letter-spacing: .08em; }
+    .finance-stat strong { display: block; margin-top: 4px; font-size: 20px; letter-spacing: -.04em; }
+    .finance-stat strong.negative { color: #b6384e; }
+    .forecast-table { min-width: 900px; }
+    .forecast-table td { font-variant-numeric: tabular-nums; }
+    .forecast-table tr.total-row { font-weight: 800; background: #eff8f6; }
+    .scenario-copy { color: var(--muted); font-size: 12px; }
+    .formula { padding: 14px 16px; border-radius: 12px; background: #eef2f8; color: #34415b; font: 12px/1.65 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; overflow-wrap: anywhere; }
+    .risk-level { display: inline-block; border-radius: 99px; padding: 3px 8px; font-size: 10px; font-weight: 800; }
+    .high { color: #9e273b; background: #ffeaed; }
+    .medium { color: #855b12; background: #fff2d6; }
+    .low { color: #137262; background: #e4f7f1; }
+    .timeline { display: grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap: 12px; }
+    .timeline article { position: relative; padding: 19px; background: #fff; border: 1px solid var(--line); border-radius: 16px; }
+    .timeline time { display: inline-block; color: var(--teal-dark); font-size: 10px; text-transform: uppercase; letter-spacing: .1em; font-weight: 850; margin-bottom: 8px; }
+    .timeline ul, .check-list { margin: 10px 0 0; padding-left: 18px; color: var(--muted); font-size: 12px; }
+    .timeline li, .check-list li { margin: 5px 0; }
+    .sources-list { columns: 2; column-gap: 35px; padding-left: 19px; }
+    .sources-list li { break-inside: avoid; margin: 0 0 12px; color: var(--muted); font-size: 12px; }
+    footer { padding: 28px 0; color: #abb5c7; background: var(--navy); font-size: 11px; }
+    footer a { color: #83dfd3; }
+    .backtop { position: fixed; right: 19px; bottom: 18px; z-index: 10; width: 42px; height: 42px; display: grid; place-items: center; color: #fff; background: var(--navy-2); text-decoration: none; border-radius: 50%; box-shadow: 0 6px 20px rgba(0,0,0,.18); }
+    .mobile-label { display: none; }
+
+    @media (max-width: 900px) {
+      .nav { gap: 12px; }
+      .nav a { font-size: 11px; }
+      .hero-grid { grid-template-columns: 1fr; gap: 28px; padding-block: 62px; }
+      .hero-card { max-width: 460px; }
+      .grid.four { grid-template-columns: repeat(2, minmax(0,1fr)); }
+      .steps, .timeline { grid-template-columns: repeat(2, minmax(0,1fr)); }
+    }
+    @media (max-width: 620px) {
+      .shell { width: min(100% - 28px, 1180px); }
+      .topbar-inner { height: 58px; }
+      .brand { font-size: 12px; }
+      .nav { max-width: 60vw; }
+      .nav a:not(.nav-cta) { display: none; }
+      .hero-grid { padding-block: 50px; }
+      .hero p { font-size: 15px; }
+      .disclaimer { display: block; }
+      .disclaimer b { display: block; margin-bottom: 4px; }
+      .grid.two, .grid.three, .grid.four { grid-template-columns: 1fr; }
+      .section-heading { display: block; }
+      .section-heading .scenario-controls { margin-top: 15px; }
+      .finance-summary { grid-template-columns: repeat(2,minmax(0,1fr)); }
+      .steps, .timeline { grid-template-columns: 1fr; }
+      .sources-list { columns: 1; }
+      .card { padding: 18px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
+    }
+    @media print {
+      .topbar, .backtop, .hero-actions, .scenario-controls { display: none !important; }
+      body { background: #fff; }
+      .hero { color: #111; background: #eef2f6; }
+      .hero p, .hero-card p, .hero-card small, .hero-stat { color: #34415b; }
+      .hero-card { border-color: #ccd3de; background: #fff; }
+      .hero-card strong, .hero-stat b { color: #111; }
+      .card, .table-wrap { box-shadow: none; }
+      a { color: #111; }
+      .section { break-inside: avoid; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="shell topbar-inner">
+      <a class="brand" href="#start" aria-label="Biznesplan — początek">
+        <span class="brand-mark">in</span>
+        <span>Biznesplan · LinkedIn B2B</span>
+      </a>
+      <nav class="nav" aria-label="Nawigacja główna">
+        <a href="#rynek">Rynek</a>
+        <a href="#konkurencja">Konkurencja</a>
+        <a href="#model">Model</a>
+        <a href="#operacje">Operacje</a>
+        <a href="#finanse">Finanse</a>
+        <a href="#plan">90 dni</a>
+        <a class="nav-cta" href="#rekomendacja">Rekomendacja</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero" id="start">
+    <div class="shell hero-grid">
+      <div>
+        <div class="eyebrow">Plan uruchomienia · Polska · 2026</div>
+        <h1>LinkedIn, który wspiera sprzedaż B2B.</h1>
+        <p>Biznesplan abonamentowej obsługi LinkedIn dla małych i średnich firm: od rzetelnej oceny rynku po szczegółową prognozę i plan pierwszych 90 dni.</p>
+        <div class="hero-actions">
+          <a class="button" href="#rekomendacja">Przejdź do rekomendacji <span aria-hidden="true">&nbsp;↘</span></a>
+          <a class="button secondary" href="#finanse">Zobacz model finansowy</a>
+        </div>
+      </div>
+      <aside class="hero-card" aria-label="Najważniejsze wnioski">
+        <small>Werdykt</small>
+        <strong>Testuj, nie skaluj od razu.</strong>
+        <p>Jest potencjał, ale rynek jest konkurencyjny, a proste pakiety publikacji są sprzedawane tanio.</p>
+        <div class="hero-stat"><span>Rekomendowany koszt uruchomienia</span><b>15–25 tys. zł</b></div>
+        <div class="hero-stat"><span>Próg rentowności modelu bazowego</span><b>ok. 5 klientów</b></div>
+        <div class="hero-stat"><span>Najważniejszy warunek</span><b>kompetencje B2B</b></div>
+      </aside>
+    </div>
+  </section>
+
+  <div class="disclaimer-wrap">
+    <div class="shell disclaimer">
+      <b>Założenie analizy</b>
+      <span>Przyjmuję, że chodzi o usługę agencyjną: strategię, przygotowanie i publikację treści oraz raportowanie LinkedIn — nie o stworzenie własnej platformy. Wartości finansowe są szacunkami; ceny konkurentów i dane zewnętrzne są oznaczone źródłami.</span>
+    </div>
+  </div>
+
+  <main class="shell">
+    <section class="section" id="podsumowanie">
+      <div class="section-heading">
+        <div>
+          <div class="section-kicker">01 · Podsumowanie</div>
+          <h2>Okazja jest realna, przewaga nie powstanie sama.</h2>
+        </div>
+      </div>
+      <div class="grid three">
+        <article class="card accent-card">
+          <span class="tag">Potencjał</span>
+          <p class="metric" style="margin-top:13px">4,22 mln</p>
+          <p class="metric-label">użytkowników LinkedIn w Polsce w panelu Mediapanel, sierpień 2026 — nie liczba kont ani kupujących.</p>
+        </article>
+        <article class="card accent-card">
+          <span class="tag">Konkurencja</span>
+          <p class="metric" style="margin-top:13px">500–999 zł</p>
+          <p class="metric-label">publiczne ceny części prostych pakietów konkurencji; nowa firma nie powinna konkurować wyłącznie liczbą postów.</p>
+        </article>
+        <article class="card warning-card">
+          <span class="tag">Luka do uzupełnienia</span>
+          <p style="font-size:18px;font-weight:800;margin:13px 0 7px">Kompetencje, nie sprzęt</p>
+          <p class="metric-label">Komputer wystarczy do pracy. Brakuje potwierdzonych kompetencji, doświadczenia, portfolio i sieci sprzedażowej.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="usluga">
+      <div class="section-heading">
+        <div>
+          <div class="section-kicker">02 · Przedsięwzięcie</div>
+          <h2>Sprzedawaj proces komunikacji, nie „posty”.</h2>
+        </div>
+      </div>
+      <div class="grid two">
+        <article class="card">
+          <h3>Zakres usługi</h3>
+          <p>Abonament obejmuje określenie celu LinkedIn, audyt profilu, miesięczną rozmowę z ekspertem klienta, plan tematów, przygotowanie tekstów i prostych grafik, akceptację, publikację oraz raport.</p>
+          <p>Profil firmowy uzupełniać treściami z profilu lidera lub eksperta — tylko za jego zgodą. Materiały dla zespołu mają zachęcać do dobrowolnego udostępniania, nie wymuszać interakcje.</p>
+        </article>
+        <article class="card">
+          <h3>Problem, który rozwiązujesz</h3>
+          <ul class="check-list">
+            <li>Nieregularna komunikacja i brak czasu ekspertów.</li>
+            <li>Profil ograniczony do ofert, rekrutacji i komunikatów promocyjnych.</li>
+            <li>Wiedza pracowników niewykorzystana w sprzedaży i employer brandingu.</li>
+            <li>Brak pomiaru kliknięć, zapytań i wpływu na rozmowy handlowe.</li>
+          </ul>
+        </article>
+      </div>
+      <div class="grid three" style="margin-top:16px">
+        <article class="card compact"><h3>Wartość</h3><p class="muted small">Stała obecność, sprawniejsze wydobywanie wiedzy ekspertów i mierzalny proces publikacji. Bez gwarancji liczby leadów czy zasięgów.</p></article>
+        <article class="card compact"><h3>Wyróżnik</h3><p class="muted small">Branżowa specjalizacja, krótki wywiad ekspercki, ograniczona liczba poprawek i raport z przejściem od publikacji do zapytania.</p></article>
+        <article class="card compact"><h3>Rozwój</h3><p class="muted small">Audyty, warsztaty, marka osobista liderów, employee advocacy i LinkedIn Ads — dopiero po zweryfikowaniu abonamentu.</p></article>
+      </div>
+    </section>
+
+    <section class="section" id="rynek">
+      <div class="section-heading">
+        <div>
+          <div class="section-kicker">03 · Analiza rynku</div>
+          <h2>Duża baza firm nie oznacza równie dużego popytu.</h2>
+        </div>
+      </div>
+      <p class="lead">GUS raportował 2,896 mln aktywnych przedsiębiorstw w II kwartale 2026 r.; mikrofirmy stanowiły 96%. Małe, średnie i duże razem to około 116 tys. firm. Segment do obsługi należy zawęzić do organizacji B2B z ekspercką ofertą, wysoką wartością kontraktu lub potrzebami rekrutacyjnymi.</p>
+      <div class="grid four" style="margin-top:18px">
+        <article class="card compact"><p class="metric">2,896 mln</p><p class="metric-label">aktywnych przedsiębiorstw, Polska, Q2 2026 · GUS</p></article>
+        <article class="card compact"><p class="metric">~116 tys.</p><p class="metric-label">małych, średnich i dużych firm łącznie · wyliczenie z udziałów GUS</p></article>
+        <article class="card compact"><p class="metric">11,6–29 tys.</p><p class="metric-label">potencjalny fit B2B · założenie 10–25% z powyższych firm</p></article>
+        <article class="card compact"><p class="metric">4,22 mln</p><p class="metric-label">miesięcznych użytkowników LinkedIn wg Mediapanel, VIII 2026</p></article>
+      </div>
+      <div class="grid two" style="margin-top:16px">
+        <article class="card">
+          <h3>Trendy i popyt</h3>
+          <ul class="check-list">
+            <li>W ofertach dostawców rośnie znaczenie profili liderów, employee advocacy, social sellingu i treści eksperckich.</li>
+            <li>Publikacja na LinkedIn może wspierać proces B2B, ale nie zastępuje oferty, strony internetowej ani pracy handlowca.</li>
+            <li>AI obniża koszt przeciętnych treści; rośnie znaczenie wiedzy branżowej, wywiadów, redakcji i pomiaru.</li>
+          </ul>
+          <p class="source-note">To obserwacje ofert i danych, nie dowód powszechnego wzrostu popytu.</p>
+        </article>
+        <article class="card">
+          <h3>Bariery wejścia</h3>
+          <ul class="check-list">
+            <li>Wiedza o branży i umiejętność pisania w głosie konkretnego eksperta.</li>
+            <li>Długie akceptacje, brak materiałów i nieregularna dostępność klienta.</li>
+            <li>Presja cenowa prostych pakietów i trudność przypisania sprzedaży do kanału.</li>
+            <li>Zależność od zasad i algorytmów LinkedIn.</li>
+          </ul>
+        </article>
+      </div>
+      <div class="formula" style="margin-top:16px">
+        Potencjalny fit: 116 000 firm × 10–25% = 11 600–29 000 firm. To hipoteza do walidacji, nie zmierzona liczba kupujących. Przy abonamencie 3 800 zł/mies. teoretyczna wartość jednego roku dla całego segmentu wyniosłaby 0,53–1,32 mld zł — nie prognoza sprzedaży.
+      </div>
+    </section>
+
+    <section class="section" id="konkurencja">
+      <div class="section-heading">
+        <div>
+          <div class="section-kicker">04 · Konkurencja</div>
+          <h2>Największym zagrożeniem jest komodytyzacja.</h2>
+        </div>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Firma</th><th>Oferta sprawdzona na stronie</th><th class="num">Publiczna cena</th><th>Wniosek</th></tr></thead>
+          <tbody>
+            <tr><td><a href="https://contenthero.pl/prowadzenie-linkedin/" target="_blank" rel="noopener">Content Hero</a></td><td>Profile osobowe i firmowe, posty, sieć kontaktów, raportowanie i reklamy</td><td class="num">500–1 500 zł/mies.; większy pakiet od 2 000 zł</td><td>Niska cena podstawowego zakresu; konkuruj procesem i specjalizacją.</td></tr>
+            <tr><td><a href="https://www.cleveragency.pl/prowadzenie-linkedin/" target="_blank" rel="noopener">CleverAgency</a></td><td>Pakiety 4, 8 i 12 postów, grafika, strategia i wybrane dodatki</td><td class="num">599–999 zł netto/mies.</td><td>Silne porównywanie pakietów przez liczbę publikacji.</td></tr>
+            <tr><td><a href="https://lapzaslowko.pl/prowadzenie-linkedin-dla-firm/" target="_blank" rel="noopener">Łap za Słówko</a></td><td>Strategia, treści, publikacja, monitoring, raportowanie i usługi kreatywne</td><td class="num">Indywidualna wycena</td><td>Konkurent w szerszej obsłudze; cena nie była widoczna w sprawdzonym opisie.</td></tr>
+            <tr><td><a href="https://brandbay.pl/linkedin-dla-firm" target="_blank" rel="noopener">Brandbay</a></td><td>Strategia, treści, grafika, LinkedIn Ads i raportowanie</td><td class="num">Bezpłatna wycena</td><td>Kompleksowy zakres, bez publicznego cennika.</td></tr>
+            <tr><td><a href="https://sharebee.pl/oferta/" target="_blank" rel="noopener">Sharebee</a></td><td>Employee advocacy, social selling, platforma, treści i warsztaty</td><td class="num">Nie podano na sprawdzonej stronie</td><td>Alternatywa dla większych firm aktywujących zespoły.</td></tr>
+            <tr><td><a href="https://widoczni.com/reklama-linkedin/" target="_blank" rel="noopener">Widoczni</a></td><td>LinkedIn Ads: strategia, kampanie i optymalizacja</td><td class="num">Indywidualna wycena</td><td>Konkurencja w reklamie płatnej, nie bezpośrednio w organicznym abonamencie.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="table-caption">Ceny i zakresy pochodzą z publicznych stron dostawców sprawdzonych w listopadzie 2026 r.; zakresy nie są w pełni porównywalne.</p>
+    </section>
+
+    <section class="section" id="klienci">
+      <div class="section-heading">
+        <div>
+          <div class="section-kicker">05 · Grupa docelowa</div>
+          <h2>Zacznij od firm, gdzie jeden kontrakt jest dużo wart.</h2>
+        </div>
+      </div>
+      <div class="grid three">
+        <article class="card">
+          <span class="tag">Priorytet</span>
+          <h3 style="margin-top:12px">B2B, 10–249 pracowników</h3>
+          <p class="muted small">IT/software, rekrutacja, doradztwo, szkolenia biznesowe lub dostawcy przemysłowi. Wybierz jedną branżę po rozmowach, nie przed nimi.</p>
+        </article>
+        <article class="card">
+          <span class="tag">Decydenci</span>
+          <h3 style="margin-top:12px">CEO, marketing, sprzedaż, HR</h3>
+          <p class="muted small">W małej firmie zwykle właściciel. W średniej dyrektor marketingu/sprzedaży. W dużej także zakupy, prawny i kilka osób akceptujących treści.</p>
+        </article>
+        <article class="card">
+          <span class="tag">Warunek zakupu</span>
+          <h3 style="margin-top:12px">Ekspert i proces po stronie klienta</h3>
+          <p class="muted small">Klient powinien dostarczać wiedzę, akceptować treści i mieć z kim obsłużyć zapytania. Bez tego sam abonament nie naprawi marketingu.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="model">
+      <div class="section-heading">
+        <div>
+          <div class="section-kicker">06 · Oferta i przychody</div>
+          <h2>Pakiety wyceniaj według efektu pracy, nie liczby slajdów.</h2>
+        </div>
+      </div>
+      <div class="grid four">
+        <article class="card">
+          <span class="tag">Jednorazowo</span>
+          <p class="metric" style="margin-top:12px">1 200 zł</p>
+          <h3>Audyt i plan</h3>
+          <p class="muted small">Audyt profilu, cele, tematy i plan na pierwszy miesiąc.</p>
+        </article>
+        <article class="card accent-card">
+          <span class="tag">Abonament</span>
+          <p class="metric" style="margin-top:12px">2 500 zł</p>
+          <h3>Start</h3>
+          <p class="muted small">Jeden profil, 4 posty, rozmowa ekspercka, kalendarz i raport.</p>
+        </article>
+        <article class="card accent-card">
+          <span class="tag">Abonament</span>
+          <p class="metric" style="margin-top:12px">4 200 zł</p>
+          <h3>Rozwój</h3>
+          <p class="muted small">Profil firmy i lidera, do 8 publikacji łącznie, dystrybucja i pomiar.</p>
+        </article>
+        <article class="card">
+          <span class="tag">Abonament</span>
+          <p class="metric" style="margin-top:12px">od 7 500 zł</p>
+          <h3>Zespół</h3>
+          <p class="muted small">Firma, 2–3 liderów, do 12 publikacji i program treści dla zespołu.</p>
+        </article>
+      </div>
+      <div class="grid two" style="margin-top:16px">
+        <article class="card">
+          <h3>Rozliczenie i skalowanie</h3>
+          <p>Abonament fakturowany z góry, początkowo w 3-miesięcznym pilotażu. Budżet reklamowy płatny bezpośrednio przez klienta. Przychody dodatkowe: audyty, warsztaty, profile liderów, wideo i kampanie.</p>
+        </article>
+        <article class="card">
+          <h3>Skalowalność: umiarkowana</h3>
+          <p>Sprzedaż i proces można standaryzować, ale eksperckie treści nadal wymagają rozmów i kontroli jakości. Skalowanie wymaga podwykonawców; „dużo klientów, niska cena” szybko przeciąży właściciela.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="operacje">
+      <div class="section-heading">
+        <div>
+          <div class="section-kicker">07 · Operacje</div>
+          <h2>Minimum zespołu, maksimum dyscypliny procesu.</h2>
+        </div>
+      </div>
+      <div class="steps">
+        <article class="step"><div class="step-number">1</div><h3>Kwalifikacja</h3><p>Cel, grupa odbiorców, oferta, dostępność eksperta i proces obsługi zapytań.</p></article>
+        <article class="step"><div class="step-number">2</div><h3>Audyt i plan</h3><p>Profile, konkurencja, tematy, KPI, CTA i zasady akceptacji.</p></article>
+        <article class="step"><div class="step-number">3</div><h3>Tworzenie</h3><p>Wywiad ekspercki, posty, grafiki, akceptacja przed publikacją.</p></article>
+        <article class="step"><div class="step-number">4</div><h3>Publikacja i wnioski</h3><p>Raport, UTM, zapytania oraz decyzje na kolejny miesiąc.</p></article>
+      </div>
+      <div class="grid two" style="margin-top:16px">
+        <article class="card">
+          <h3>Potrzebne kompetencje</h3>
+          <p class="muted small">Copywriting B2B, rozmowy z ekspertami, strategia LinkedIn, analityka, obsługa klienta i sprzedaż. Grafik lub redaktor mogą być podwykonawcami.</p>
+        </article>
+        <article class="card warning-card">
+          <h3>Bezpieczeństwo i zasady platformy</h3>
+          <p class="small">Nie udostępniać danych logowania do prywatnych kont. Korzystać z praw administratora strony i uzgodnionego, bezpiecznego trybu pracy z profilem osobowym. Nie sprzedawać masowej automatyzacji zaproszeń ani sztucznych interakcji. <a href="https://www.linkedin.com/legal/user-agreement" target="_blank" rel="noopener">Warunki LinkedIn</a>.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="marketing">
+      <div class="section-heading">
+        <div>
+          <div class="section-kicker">08 · Sprzedaż</div>
+          <h2>Własny LinkedIn powinien być pierwszym case study.</h2>
+        </div>
+      </div>
+      <div class="grid three">
+        <article class="card compact"><h3>1. Wybierz segment</h3><p class="muted small">Ręcznie wybierz 50–100 firm z jednej branży. Nie zaczynaj od komunikatu „obsługujemy wszystkich”.</p></article>
+        <article class="card compact"><h3>2. Pokaż konkretną wartość</h3><p class="muted small">Publikuj analizy i przykłady własnej pracy. Zapraszaj na rozmowę opartą na indywidualnej obserwacji firmy.</p></article>
+        <article class="card compact"><h3>3. Sprzedaj pilotaż</h3><p class="muted small">Audyt lub 3-miesięczny test płatny. Ustal mierniki i zakres; nie gwarantuj zasięgów ani sprzedaży.</p></article>
+      </div>
+      <p class="lead" style="margin-top:16px">Najbardziej opłacalne kanały na starcie: własny profil LinkedIn, polecenia, współpraca z agencjami CRM/stron www i webinar branżowy. Wskaźniki: rozmowy kwalifikowane, oferty, konwersja, średni abonament, czas obsługi, odnowienia i zapytania z kanału.</p>
+    </section>
+
+    <section class="section" id="finanse">
+      <div class="section-heading">
+        <div>
+          <div class="section-kicker">09 · Finanse</div>
+          <h2>Model jest wrażliwy na liczbę klientów i średnią cenę.</h2>
+        </div>
+        <div class="scenario-controls" role="group" aria-label="Wybór scenariusza prognozy">
+          <button class="scenario-button" type="button" data-scenario="pessimistic" aria-pressed="false">Pesymistyczny</button>
+          <button class="scenario-button" type="button" data-scenario="realistic" aria-pressed="true">Realistyczny</button>
+          <button class="scenario-button" type="button" data-scenario="optimistic" aria-pressed="false">Optymistyczny</button>
+        </div>
+      </div>
+      <p class="lead">Prognoza zakłada ceny netto, pełny ZUS, koszty stałe, koszty podwykonawców i 15% rezerwy PIT. Wariant optymistyczny wymaga większej liczby wykonawców i ma wyższy koszt zdrowotny.</p>
+      <div class="finance-summary" aria-live="polite">
+        <div class="finance-stat"><span>Przychód w 12 mies.</span><strong id="annualRevenue">250 800 zł</strong></div>
+        <div class="finance-stat"><span>Przepływ po kosztach*</span><strong id="annualCash">98 072 zł</strong></div>
+        <div class="finance-stat"><span>Klienci w miesiącu 12</span><strong id="endingClients">11</strong></div>
+        <div class="finance-stat"><span>Największy niedobór gotówki</span><strong id="cashNeed">22 755 zł</strong></div>
+      </div>
+      <p class="scenario-copy" id="scenarioDescription">Scenariusz realistyczny: średnio 3 800 zł netto za aktywnego klienta miesięcznie; liczba klientów rośnie od 0 do 11.</p>
+      <div class="table-wrap">
+        <table class="forecast-table">
+          <thead>
+            <tr>
+              <th>Miesiąc</th><th class="num">Klienci</th><th class="num">Przychód</th><th class="num">Realizacja</th><th class="num">Rezerwa PIT</th><th class="num">Koszty stałe</th><th class="num">Start</th><th class="num">Przepływ netto</th><th class="num">Saldo skumulowane</th>
+            </tr>
+          </thead>
+          <tbody id="forecastBody"></tbody>
+          <tfoot id="forecastFoot"></tfoot>
+        </table>
+      </div>
+      <p class="table-caption">* Po kosztach realizacji, kosztach stałych, wydatku startowym i rezerwie podatkowej; przed prywatnymi wypłatami właściciela. Kwoty zaokrąglone do pełnych złotych.</p>
+
+      <div class="grid two" style="margin-top:18px">
+        <article class="card">
+          <h3>Nakłady startowe — szacunek</h3>
+          <div class="table-wrap" style="box-shadow:none">
+            <table style="min-width:430px">
+              <thead><tr><th>Pozycja</th><th class="num">Kwota</th></tr></thead>
+              <tbody>
+                <tr><td>Umowy, konsultacja prawna, dokumenty</td><td class="num">2 500 zł</td></tr>
+                <tr><td>Strona i materiały ofertowe</td><td class="num">3 500 zł</td></tr>
+                <tr><td>Szkolenie / mentoring B2B</td><td class="num">3 500 zł</td></tr>
+                <tr><td>Narzędzia na start</td><td class="num">1 000 zł</td></tr>
+                <tr><td>Testy sprzedaży i marketing</td><td class="num">3 000 zł</td></tr>
+                <tr><td>Rezerwa uruchomieniowa</td><td class="num">1 500 zł</td></tr>
+                <tr class="total-row"><td><b>Razem</b></td><td class="num"><b>15 000 zł</b></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </article>
+        <article class="card">
+          <h3>Próg rentowności i marża</h3>
+          <p>Przy cenie średniej 3 800 zł, 15% kosztów realizacji i 15% rezerwy PIT, na koszty stałe i pracę właściciela pozostaje 2 660 zł na klienta.</p>
+          <div class="formula">Próg ≈ (5 207 zł koszty stałe + 6 000 zł wartość pracy właściciela) ÷ 2 660 zł = 4,2 → około 5 klientów. Z rozłożeniem kosztu startu na 12 mies. nadal około 5 klientów.</div>
+          <p class="small muted" style="margin-top:12px">Koszty stałe zawierają ZUS społeczny 1 926,76 zł i składkę zdrowotną 830,58 zł w przyjętym przedziale przychodu.</p>
+        </article>
+      </div>
+      <div class="card warning-card" style="margin-top:16px">
+        <h3>Podatki i VAT — przed startem sprawdź z księgowym</h3>
+        <p class="small">Limit zwolnienia podmiotowego z VAT to 240 tys. zł w 2026 r.; przy rozpoczęciu w trakcie roku limit jest proporcjonalny. Scenariusz realistyczny zakłada czynny VAT, bo przychód przekracza limit. Ryczałt 15% przyjęto jako ostrożną rezerwę dla usług, które mogą zostać zaklasyfikowane jako reklamowe. Ostateczna stawka i forma opodatkowania zależą od zakresu usług i PKWiU. [Biznes.gov.pl – VAT](https://www.biznes.gov.pl/pl/portal/00246) · [Ministerstwo Finansów – PIT](https://podatki.gov.pl/podatki-firmowe/pit/stawki-i-limity/).</p>
+      </div>
+    </section>
+
+    <section class="section" id="ryzyka">
+      <div class="section-heading">
+        <div>
+          <div class="section-kicker">10 · Ryzyka</div>
+          <h2>Najpierw ogranicz ryzyko wykonania i sprzedaży.</h2>
+        </div>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Zagrożenie</th><th>Prawdopodobieństwo</th><th>Skutek</th><th>Ograniczenie / sygnał do zmiany</th></tr></thead>
+          <tbody>
+            <tr><td>Brak kompetencji lub treści o niskiej jakości</td><td><span class="risk-level high">Wysokie</span></td><td>Wysoki</td><td>Pozyskać doświadczonego partnera; nie sprzedawać bez pilotażu.</td></tr>
+            <tr><td>Konkurencja cenowa</td><td><span class="risk-level high">Wysokie</span></td><td>Wysoki</td><td>Nie sprzedawać samych postów; zmienić segment, jeśli klienci kupują wyłącznie najtańszą ofertę.</td></tr>
+            <tr><td>Opóźnione akceptacje i brak wiedzy klienta</td><td><span class="risk-level high">Wysokie</span></td><td>Średni</td><td>Osoba decyzyjna, terminy i jedna runda korekt w umowie.</td></tr>
+            <tr><td>Brak leadów lub trudna atrybucja</td><td><span class="risk-level medium">Średnie</span></td><td>Wysoki</td><td>UTM i CRM, realistyczne KPI; nie obiecywać konkretnej liczby sprzedaży.</td></tr>
+            <tr><td>Zmiana zasad LinkedIn / utrata dostępu</td><td><span class="risk-level medium">Średnie</span></td><td>Wysoki</td><td>Uprawnienia administratora, brak automatyzacji łamiącej zasady, dywersyfikacja kanałów.</td></tr>
+            <tr><td>Prawa autorskie i dane osobowe</td><td><span class="risk-level medium">Średnie</span></td><td>Wysoki</td><td>Zgody, umowy, prawa do materiałów i uzgodnione przetwarzanie danych.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="section" id="plan">
+      <div class="section-heading">
+        <div>
+          <div class="section-kicker">11 · Pierwsze 90 dni</div>
+          <h2>Waliduj sprzedaż, zanim zwiększysz koszty.</h2>
+        </div>
+      </div>
+      <div class="timeline">
+        <article>
+          <time>Dni 1–15</time>
+          <h3>Rozmowy i wybór niszy</h3>
+          <ul><li>15 rozmów z firmami</li><li>Ocena kompetencji i partnera</li><li>Zakres płatnego pilotażu</li></ul>
+          <p class="small"><b>Rezultat:</b> 3 deklaracje zainteresowania pilotem.</p>
+        </article>
+        <article>
+          <time>Dni 16–30</time>
+          <h3>Oferta i pierwsza sprzedaż</h3>
+          <ul><li>Pakiety, umowa, portfolio</li><li>Strona i przykładowe treści</li><li>Budżet do 3 tys. zł</li></ul>
+          <p class="small"><b>Rezultat:</b> 2 płatne pilotaże, cena od 2 500 zł netto.</p>
+        </article>
+        <article>
+          <time>Dni 31–60</time>
+          <h3>Dowiezienie usługi</h3>
+          <ul><li>Wywiady i publikacje</li><li>Raport i pomiar UTM</li><li>Ręczna sprzedaż do firm</li></ul>
+          <p class="small"><b>Rezultat:</b> 3–4 płacących klientów, koszty realizacji do 20% przychodu.</p>
+        </article>
+        <article>
+          <time>Dni 61–90</time>
+          <h3>Odnowienia i decyzja</h3>
+          <ul><li>Case study za zgodą</li><li>Rozmowy o odnowieniu</li><li>Korekta ceny i zakresu</li></ul>
+          <p class="small"><b>Rezultat:</b> 5 klientów; co najmniej 2 z 3 pilotów odnawiają.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="rekomendacja">
+      <div class="section-heading">
+        <div>
+          <div class="section-kicker">12 · Decyzja</div>
+          <h2>Rekomendacja: uruchomić mały pilotaż, nie pełną agencję.</h2>
+        </div>
+      </div>
+      <div class="grid two">
+        <article class="card decision-card">
+          <span class="tag">Rekomendacja</span>
+          <h3 style="font-size:23px;margin-top:14px">Modyfikacja koncepcji + test sprzedaży</h3>
+          <p>Nie wydawaj od razu 100 tys. zł. Ogranicz pierwsze wydatki do 15–25 tys. zł, skup się na jednej branży i zdobądź 3 płatne pilotaże. Dopiero po odnowieniach rozbuduj wykonawstwo.</p>
+        </article>
+        <article class="card">
+          <h3>Warunki „go / no-go” po 90 dniach</h3>
+          <ul class="check-list">
+            <li>Co najmniej 5 aktywnych klientów.</li>
+            <li>Średni abonament docelowo ≥3 500 zł netto.</li>
+            <li>Co najmniej 2 z 3 pierwszych klientów odnawia współpracę.</li>
+            <li>Obsługa mieści się w zaplanowanym czasie i koszcie.</li>
+            <li>Klient dostarcza wiedzę i akceptuje treści w terminie.</li>
+          </ul>
+        </article>
+      </div>
+      <div class="grid three" style="margin-top:16px">
+        <article class="card compact"><h3>Największa słabość</h3><p class="muted small">Niepotwierdzone kompetencje założyciela i bardzo tanie oferty podstawowe.</p></article>
+        <article class="card compact"><h3>Co testować</h3><p class="muted small">Gotowość do zapłaty, odnowienia, czas obsługi i jakość treści, nie same zasięgi.</p></article>
+        <article class="card compact"><h3>Kiedy zmienić kierunek</h3><p class="muted small">Jeśli nie ma płatnych pilotów lub odnowień — przejść do audytów, szkoleń albo podwykonawstwa.</p></article>
+      </div>
+    </section>
+
+    <section class="section" id="zrodla">
+      <div class="section-heading">
+        <div>
+          <div class="section-kicker">Źródła i metodologia</div>
+          <h2>Co jest faktem, a co założeniem.</h2>
+        </div>
+      </div>
+      <div class="card">
+        <p class="muted small">Dane rynkowe i ceny konkurentów pochodzą ze źródeł publicznych. Segment 10–25% potencjalnego fitu, proponowany cennik, koszty, struktura sprzedaży i prognoza finansowa są szacunkami do sprawdzenia w pilotażu. Liczba członków LinkedIn i miesięczna liczba użytkowników to różne miary.</p>
+        <ol class="sources-list">
+          <li><a href="https://stat.gov.pl/obszary-tematyczne/podmioty-gospodarcze-wyniki-finansowe/przedsiebiorstwa-niefinansowe/przedsiebiorstwa-aktywne-w-2-kwartale-2026-r-,42,7.html" target="_blank" rel="noopener">GUS — Przedsiębiorstwa aktywne w II kwartale 2026 r.</a></li>
+          <li><a href="https://www.wirtualnemedia.pl/tiktok-instagram-facebook-najpopularniejsze-aplikacje-spolecznosciowe-w-polsce-ilu-internautow-korzysta,7329375665350816a" target="_blank" rel="noopener">Wirtualne Media / Gemius-PBI — Mediapanel, sierpień 2026</a></li>
+          <li><a href="https://datareportal.com/reports/digital-2025-poland" target="_blank" rel="noopener">DataReportal — Digital 2025: Poland</a></li>
+          <li><a href="https://contenthero.pl/prowadzenie-linkedin/" target="_blank" rel="noopener">Content Hero — prowadzenie LinkedIn i cennik</a></li>
+          <li><a href="https://www.cleveragency.pl/prowadzenie-linkedin/" target="_blank" rel="noopener">CleverAgency — prowadzenie profilu na LinkedIn</a></li>
+          <li><a href="https://lapzaslowko.pl/prowadzenie-linkedin-dla-firm/" target="_blank" rel="noopener">Łap za Słówko — prowadzenie LinkedIn dla firm</a></li>
+          <li><a href="https://brandbay.pl/linkedin-dla-firm" target="_blank" rel="noopener">Brandbay — LinkedIn dla firm</a></li>
+          <li><a href="https://sharebee.pl/oferta/" target="_blank" rel="noopener">Sharebee — employee advocacy i social selling</a></li>
+          <li><a href="https://widoczni.com/reklama-linkedin/" target="_blank" rel="noopener">Widoczni — LinkedIn Ads</a></li>
+          <li><a href="https://www.zus.pl/baza-wiedzy/skladki-wskazniki-odsetki/skladki/wysokosc-skladek-na-ubezpieczenia-spoleczne" target="_blank" rel="noopener">ZUS — składki za osoby prowadzące działalność w 2026 r.</a></li>
+          <li><a href="https://www.biznes.gov.pl/pl/portal/00246" target="_blank" rel="noopener">Biznes.gov.pl — VAT i limit zwolnienia</a></li>
+          <li><a href="https://podatki.gov.pl/podatki-firmowe/pit/stawki-i-limity/" target="_blank" rel="noopener">Ministerstwo Finansów — stawki PIT i ryczałtu</a></li>
+          <li><a href="https://www.linkedin.com/legal/user-agreement" target="_blank" rel="noopener">LinkedIn — User Agreement</a></li>
+        </ol>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="shell">
+      <p style="margin:0">Biznesplan przygotowany do oceny i walidacji. Prognoza nie jest poradą księgową ani gwarancją osiągnięcia wyników. Przed rejestracją firmy potwierdź PKWiU, formę opodatkowania, VAT i uprawnienia do ulg z księgowym lub doradcą.</p>
+    </div>
+  </footer>
+  <a class="backtop" href="#start" aria-label="Wróć na górę">↑</a>
+
+  <script>
+    (function () {
+      "use strict";
+      var scenarios = {
+        pessimistic: {
+          name: "Pesymistyczny",
+          clients: [0, 0, 1, 1, 2, 2, 3, 3, 3, 4, 4, 4],
+          price: 2800,
+          deliveryRate: 0.15,
+          fixed: 5207.34,
+          copy: "Scenariusz pesymistyczny: średni abonament 2 800 zł netto; do 4 klientów w miesiącu 12. Zakłada 15% kosztów realizacji i 15% rezerwy PIT."
+        },
+        realistic: {
+          name: "Realistyczny",
+          clients: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11],
+          price: 3800,
+          deliveryRate: 0.15,
+          fixed: 5207.34,
+          copy: "Scenariusz realistyczny: średnio 3 800 zł netto za aktywnego klienta miesięcznie; liczba klientów rośnie od 0 do 11. Zakłada 15% kosztów realizacji i 15% rezerwy PIT."
+        },
+        optimistic: {
+          name: "Optymistyczny",
+          clients: [1, 2, 3, 5, 7, 9, 11, 13, 15, 17, 19, 21],
+          price: 4000,
+          deliveryRate: 0.30,
+          fixed: 5871.80,
+          copy: "Scenariusz optymistyczny: szybki wzrost do 21 klientów, średnio 4 000 zł netto, 30% kosztów realizacji. Koszty stałe uwzględniają wyższą składkę zdrowotną przy rocznym przychodzie ponad 300 tys. zł."
+        }
+      };
+      var taxRate = 0.15;
+      var startup = 15000;
+      var currency = new Intl.NumberFormat("pl-PL", { maximumFractionDigits: 0 });
+      var body = document.getElementById("forecastBody");
+      var foot = document.getElementById("forecastFoot");
+
+      function money(value) {
+        return currency.format(Math.round(value)) + " zł";
+      }
+
+      function render(key) {
+        var scenario = scenarios[key];
+        var totalRevenue = 0;
+        var totalDelivery = 0;
+        var totalTax = 0;
+        var totalFixed = 0;
+        var totalStartup = startup;
+        var cumulative = 0;
+        var lowestBalance = 0;
+        var html = "";
+
+        scenario.clients.forEach(function (count, index) {
+          var revenue = count * scenario.price;
+          var delivery = revenue * scenario.deliveryRate;
+          var tax = revenue * taxRate;
+          var setup = index === 0 ? startup : 0;
+          var net = revenue - delivery - tax - scenario.fixed - setup;
+          cumulative += net;
+          if (cumulative < lowestBalance) lowestBalance = cumulative;
+          totalRevenue += revenue;
+          totalDelivery += delivery;
+          totalTax += tax;
+          totalFixed += scenario.fixed;
+          html += "<tr>" +
+            "<td>" + (index + 1) + "</td>" +
+            "<td class=\"num\">" + count + "</td>" +
+            "<td class=\"num\">" + money(revenue) + "</td>" +
+            "<td class=\"num\">" + money(delivery) + "</td>" +
+            "<td class=\"num\">" + money(tax) + "</td>" +
+            "<td class=\"num\">" + money(scenario.fixed) + "</td>" +
+            "<td class=\"num\">" + money(setup) + "</td>" +
+            "<td class=\"num\">" + money(net) + "</td>" +
+            "<td class=\"num\">" + money(cumulative) + "</td>" +
+            "</tr>";
+        });
+        body.innerHTML = html;
+        var totalNet = totalRevenue - totalDelivery - totalTax - totalFixed - totalStartup;
+        foot.innerHTML = "<tr class=\"total-row\">" +
+          "<td>Rok</td><td class=\"num\">" + scenario.clients[11] + "</td>" +
+          "<td class=\"num\">" + money(totalRevenue) + "</td>" +
+          "<td class=\"num\">" + money(totalDelivery) + "</td>" +
+          "<td class=\"num\">" + money(totalTax) + "</td>" +
+          "<td class=\"num\">" + money(totalFixed) + "</td>" +
+          "<td class=\"num\">" + money(totalStartup) + "</td>" +
+          "<td class=\"num\">" + money(totalNet) + "</td>" +
+          "<td class=\"num\">" + money(cumulative) + "</td></tr>";
+
+        document.getElementById("annualRevenue").textContent = money(totalRevenue);
+        document.getElementById("annualCash").textContent = money(totalNet);
+        document.getElementById("annualCash").classList.toggle("negative", totalNet < 0);
+        document.getElementById("endingClients").textContent = String(scenario.clients[11]);
+        document.getElementById("cashNeed").textContent = money(Math.abs(lowestBalance));
+        document.getElementById("scenarioDescription").textContent = scenario.copy;
+      }
+
+      document.querySelectorAll(".scenario-button").forEach(function (button) {
+        button.addEventListener("click", function () {
+          document.querySelectorAll(".scenario-button").forEach(function (item) {
+            item.setAttribute("aria-pressed", item === button ? "true" : "false");
+          });
+          render(button.getAttribute("data-scenario"));
+        });
+      });
+      render("realistic");
+    }());
+  </script>
+</body>
+</html>
